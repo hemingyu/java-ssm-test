@@ -164,7 +164,37 @@
 						<encoding>${project.build.sourceEncoding}</encoding>
 					</configuration>
 				</plugin>
-				
+				<!-- jetty插件 -->
+				<plugin>
+					<groupId>org.eclipse.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<configuration>
+						<!-- 配置表示新代码的扫描时间间隔（秒），值 <= 0 表示不扫描 --> 
+						<scanIntervalSeconds>10</scanIntervalSeconds>
+						<!-- 修改启动端口 --> 
+						<httpConnector>
+							<port>9090</port>
+						</httpConnector>
+						<!-- 设置关闭jetty的key值 --> 
+						<stopKey>shutdown</stopKey>
+						<stopPort>9966</stopPort>
+						<!-- 热部署的项目名 -->
+						<webApp>
+							<contextPath>/${project.artifactId}</contextPath>
+						</webApp>
+						<!-- 配置请求日志文件 -->
+						<requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
+							<filename>target/access-yyyy_mm_dd.log</filename>
+							<filenameDateFormat>yyyy_MM_dd</filenameDateFormat>
+							<logDateFormat>yyyy-MM-dd HH:mm:ss</logDateFormat>
+							<logTimeZone>GMT+8:00</logTimeZone>
+							<append>true</append>
+							<logServer>true</logServer>
+							<retainDays>120</retainDays>
+							<logCookies>true</logCookies>
+						</requestLog>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
