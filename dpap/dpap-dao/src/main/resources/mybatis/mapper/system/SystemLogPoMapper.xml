@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hmy.test.dpap.dao.system.SystemLogPoMapper" >
+  <resultMap id="BaseResultMap" type="com.hmy.test.dpap.model.system.SystemLogPo" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="opt_no" property="optNo" jdbcType="VARCHAR" />
+    <result column="opt_name" property="optName" jdbcType="VARCHAR" />
+    <result column="model" property="model" jdbcType="VARCHAR" />
+    <result column="model_desc" property="modelDesc" jdbcType="VARCHAR" />
+    <result column="opt_time" property="optTime" jdbcType="TIMESTAMP" />
+    <result column="opt_ip" property="optIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, opt_no, opt_name, model, model_desc, opt_time, opt_ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rc_system_log
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from rc_system_log
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hmy.test.dpap.model.system.SystemLogPo" >
+    insert into rc_system_log (id, opt_no, opt_name, 
+      model, model_desc, opt_time, 
+      opt_ip)
+    values (#{id,jdbcType=VARCHAR}, #{optNo,jdbcType=VARCHAR}, #{optName,jdbcType=VARCHAR}, 
+      #{model,jdbcType=VARCHAR}, #{modelDesc,jdbcType=VARCHAR}, #{optTime,jdbcType=TIMESTAMP}, 
+      #{optIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hmy.test.dpap.model.system.SystemLogPo" >
+    insert into rc_system_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="optNo != null" >
+        opt_no,
+      </if>
+      <if test="optName != null" >
+        opt_name,
+      </if>
+      <if test="model != null" >
+        model,
+      </if>
+      <if test="modelDesc != null" >
+        model_desc,
+      </if>
+      <if test="optTime != null" >
+        opt_time,
+      </if>
+      <if test="optIp != null" >
+        opt_ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="optNo != null" >
+        #{optNo,jdbcType=VARCHAR},
+      </if>
+      <if test="optName != null" >
+        #{optName,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null" >
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="modelDesc != null" >
+        #{modelDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="optTime != null" >
+        #{optTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="optIp != null" >
+        #{optIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hmy.test.dpap.model.system.SystemLogPo" >
+    update rc_system_log
+    <set >
+      <if test="optNo != null" >
+        opt_no = #{optNo,jdbcType=VARCHAR},
+      </if>
+      <if test="optName != null" >
+        opt_name = #{optName,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null" >
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="modelDesc != null" >
+        model_desc = #{modelDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="optTime != null" >
+        opt_time = #{optTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="optIp != null" >
+        opt_ip = #{optIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hmy.test.dpap.model.system.SystemLogPo" >
+    update rc_system_log
+    set opt_no = #{optNo,jdbcType=VARCHAR},
+      opt_name = #{optName,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      model_desc = #{modelDesc,jdbcType=VARCHAR},
+      opt_time = #{optTime,jdbcType=TIMESTAMP},
+      opt_ip = #{optIp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

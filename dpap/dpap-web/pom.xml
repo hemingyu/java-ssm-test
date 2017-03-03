@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.hmy.test</groupId>
+    <artifactId>dpap</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>dpap-web</artifactId>
+  <packaging>war</packaging>
+  <name>dpap-web</name>
+  <description>dpap-web-project</description>
+  <dependencies>
+
+		<!-- 引用dpap-common子项目 -->
+		<dependency>
+			<groupId>com.hmy.test</groupId>
+			<artifactId>dpap-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<!-- 引用dpap-config子项目 -->
+		<dependency>
+			<groupId>com.hmy.test</groupId>
+			<artifactId>dpap-config</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<!-- 引用dpap-service子项目 -->
+		<dependency>
+			<groupId>com.hmy.test</groupId>
+			<artifactId>dpap-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<!-- 表示开发的时候引入，发布的时候不会加载此包 -->
+			<scope>test</scope>
+		</dependency>
+
+		<!-- spring整合junit依赖jar包 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+
+		<!-- springmvc依赖jar包 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+
+		<!-- servlet-api jar包 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<!-- 使用指定版本JDK来编译源代码 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<skip>true</skip>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<!-- jetty插件 -->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty-maven-plugin.version}</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>

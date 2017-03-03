@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.hmy.test</groupId>
+    <artifactId>dpap</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>dpap-dao</artifactId>
+  <packaging>jar</packaging>
+  <name>dpap-dao</name>
+  <url>http://maven.apache.org</url>
+<dependencies>
+	<!-- 引用dpap-common子项目 -->
+	<dependency>
+		<groupId>com.hmy.test</groupId>
+		<artifactId>dpap-common</artifactId>
+		<version>${project.version}</version>
+    </dependency>
+    <dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<!-- 表示开发的时候引入，发布的时候不会加载此包 -->
+		<scope>test</scope>
+	</dependency>
+	<!-- mybatis核心jar包 -->
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis</artifactId>
+	</dependency>
+  </dependencies>
+  <build>
+	<plugins>
+		<!-- 使用指定版本JDK来编译源代码 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+				<source>${jdk.version}</source>
+				<target>${jdk.version}</target>
+				<skip>true</skip>
+				<encoding>${project.build.sourceEncoding}</encoding>
+			</configuration>
+		</plugin>
+	</plugins>
+	</build>
+</project>

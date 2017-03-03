@@ -1,0 +1,9 @@
+com\hmy\test\dpap\common\App.class
+com\hmy\test\dpap\model\system\SystemDepartmentPo.class
+com\hmy\test\dpap\model\system\SystemGroupPo.class
+com\hmy\test\dpap\model\system\SystemIdcardPo.class
+com\hmy\test\dpap\model\system\SystemLogPo.class
+com\hmy\test\dpap\model\system\SystemPrivilegePo.class
+com\hmy\test\dpap\model\system\SystemRolepvlgRefPoKey.class
+com\hmy\test\dpap\model\system\SystemEmployeePo.class
+com\hmy\test\dpap\model\system\SystemRolePo.class
